@@ -17,6 +17,10 @@ PmergeMe & PmergeMe::operator=( PmergeMe const &other )
 	return(*this);
 }
 
+std::vector<t_pair> PmergeMe::getSortedPairs() {
+	return sorted_pairs;
+}
+
 void PmergeMe::fillContainers(std::vector<int> &numbers) {
 	vec_cont = numbers;
 	for (size_t i = 0; i < numbers.size(); i++) {
@@ -36,10 +40,25 @@ void PmergeMe::makePairs(std::vector<int> &numbers) {
 				p.smaller = numbers[i+1];
 			}
 			pairs.push_back(p);
+		} else {
+			p.bigger = 0;
+			p.smaller = numbers[i];
+			pairs.push_back(p);
 		}
 	}
 }
 
+void PmergeMe::sortPairs() {
+	sorted_pairs.push_back(pairs[0]);
+	for (size_t i = 1; i < pairs.size(); i++) {
+		size_t j = 0;
+		for (;j < sorted_pairs.size() && pairs[i].bigger > sorted_pairs[j].bigger; j++) {
+		}
+		if (pairs[i].bigger != 0)
+			sorted_pairs.insert(sorted_pairs.begin() + j, pairs[i]);
+	}
+}
+
 std::vector<int> PmergeMe::sortVec() {
-	
+	return vec_cont;
 }

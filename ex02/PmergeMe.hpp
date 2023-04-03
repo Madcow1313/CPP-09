@@ -14,6 +14,7 @@ class PmergeMe
 		std::vector<int> vec_cont;
 		std::list<int> list_cont;
 		std::vector<t_pair> pairs;
+		std::vector<t_pair> sorted_pairs;
 	public:
 		PmergeMe();
 		~PmergeMe();
@@ -24,4 +25,7 @@ class PmergeMe
 		std::list<int> sortList();
 		void makePairs(std::vector<int> &numbers);
 		void fillContainers(std::vector<int> &numbers);
+		void sortPairs();
+
+		std::vector<t_pair> getSortedPairs();
 };
