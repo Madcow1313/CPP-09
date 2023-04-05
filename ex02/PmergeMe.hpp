@@ -11,10 +11,8 @@ typedef struct s_pair {
 class PmergeMe
 {
 	private:
-		std::vector<int> vec_cont;
-		std::list<int> list_cont;
 		std::vector<t_pair> pairs;
-		std::vector<t_pair> sorted_pairs;
+		std::list<t_pair> list_pairs;
 	public:
 		PmergeMe();
 		~PmergeMe();
@@ -24,8 +22,6 @@ class PmergeMe
 		std::vector<int> sortVec();
 		std::list<int> sortList();
 		void makePairs(std::vector<int> &numbers);
-		void fillContainers(std::vector<int> &numbers);
-		void sortPairs();
-
-		std::vector<t_pair> getSortedPairs();
+		std::vector<int> mergeVec(std::vector<int> firstSubarray, std::vector<int> secondSubarray);
+		std::list<int> mergeList(std::list<int> firstSubarray, std::list<int> secondSubarray);
 };

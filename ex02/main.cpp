@@ -32,9 +32,16 @@ int main(int argc, char **argv) {
 	PmergeMe PM;
 
 	PM.makePairs(numbers);
-	PM.sortPairs();
-	std::vector<t_pair> s_v = PM.getSortedPairs();
-	for (size_t i = 0; i < s_v.size(); i++) {
-		std::cout << s_v[i].bigger << '\n';
+	std::cout << "vector\n";
+	std::vector<int> res = PM.sortVec();
+	for (size_t i = 0; i < res.size(); i++) {
+		std::cout << res[i] << '\n';
+	}
+	std::cout << "list\n";
+	std::list<int> res2 = PM.sortList();
+	std::list<int>::iterator it = res2.begin();
+	while (it != res2.end()) {
+		std::cout << *it << '\n';
+		it++;
 	}
 }
