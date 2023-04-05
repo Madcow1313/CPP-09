@@ -29,19 +29,39 @@ int main(int argc, char **argv) {
 			return -1;
 		}
 	}
+
+	std::cout << "Before:	";
+	for (size_t i = 0; i < numbers.size(); i++) {
+		if (i % 10 == 0 && i != 0) {
+			std::cout << "\n	";
+		}
+		std::cout << numbers[i] << ' ';
+	}
+	std::cout << '\n';
 	PmergeMe PM;
 
-	PM.makePairs(numbers);
-	std::cout << "vector\n";
+	std::cout << "After:	";
+	std::chrono::system_clock::time_point t1 = std::chrono::system_clock::now();
+	PM.makePairsVec(numbers);
 	std::vector<int> res = PM.sortVec();
+	std::chrono::system_clock::time_point t2 = std::chrono::system_clock::now();
+
 	for (size_t i = 0; i < res.size(); i++) {
-		std::cout << res[i] << '\n';
+		if (i % 10 == 0 && i != 0) {
+			std::cout << "\n	";
+		}
+		std::cout << res[i] << ' ';
 	}
-	std::cout << "list\n";
+	std::cout << '\n';
+	std::chrono::system_clock::time_point t3 = std::chrono::system_clock::now();
+	PM.makePairsList(numbers);
 	std::list<int> res2 = PM.sortList();
-	std::list<int>::iterator it = res2.begin();
-	while (it != res2.end()) {
-		std::cout << *it << '\n';
-		it++;
-	}
+	std::chrono::system_clock::time_point t4 = std::chrono::system_clock::now();
+	std::cout << "Time to process a range of " << numbers.size() << " elements with std::vector : " << std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count()  << " microseconds\n";
+	std::cout << "Time to process a range of " << numbers.size() << " elements with std::list : " << std::chrono::duration_cast<std::chrono::microseconds>(t4 - t3).count() << " microseconds\n";
+	// std::list<int>::iterator it = res2.begin();
+	// while (it != res2.end()) {
+	// 	std::cout << *it << '\n';
+	// 	it++;
+	// }
 }

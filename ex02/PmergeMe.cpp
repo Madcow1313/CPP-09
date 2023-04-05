@@ -17,7 +17,7 @@ PmergeMe & PmergeMe::operator=( PmergeMe const &other )
 	return(*this);
 }
 
-void PmergeMe::makePairs(std::vector<int> &numbers) {
+void PmergeMe::makePairsVec(std::vector<int> &numbers) {
 	t_pair p;
 	for (size_t i = 0; i < numbers.size(); i += 2) {
 		if (i + 1 < numbers.size()) {
@@ -29,11 +29,29 @@ void PmergeMe::makePairs(std::vector<int> &numbers) {
 				p.smaller = numbers[i+1];
 			}
 			pairs.push_back(p);
-			list_pairs.push_back(p);
 		} else {
 			p.bigger = 0;
 			p.smaller = numbers[i];
 			pairs.push_back(p);
+		}
+	}
+}
+
+void PmergeMe::makePairsList(std::vector<int> &numbers) {
+	t_pair p;
+	for (size_t i = 0; i < numbers.size(); i += 2) {
+		if (i + 1 < numbers.size()) {
+			if (numbers[i] < numbers[i+1]){
+				p.bigger = numbers[i+1];
+				p.smaller = numbers[i];
+			} else {
+				p.bigger = numbers[i];
+				p.smaller = numbers[i+1];
+			}
+			list_pairs.push_back(p);
+		} else {
+			p.bigger = 0;
+			p.smaller = numbers[i];
 			list_pairs.push_back(p);
 		}
 	}

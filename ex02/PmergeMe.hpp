@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <chrono>	
 
 typedef struct s_pair {
 	int bigger;
@@ -21,7 +22,8 @@ class PmergeMe
 
 		std::vector<int> sortVec();
 		std::list<int> sortList();
-		void makePairs(std::vector<int> &numbers);
+		void makePairsVec(std::vector<int> &numbers);
+		void makePairsList(std::vector<int> &numbers);
 		std::vector<int> mergeVec(std::vector<int> firstSubarray, std::vector<int> secondSubarray);
 		std::list<int> mergeList(std::list<int> firstSubarray, std::list<int> secondSubarray);
 };
